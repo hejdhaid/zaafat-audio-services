@@ -1,0 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const requestButtons = document.querySelectorAll('[data-request]');
+
+  requestButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.getAttribute('data-request');
+      window.open(target, '_blank');
+    });
+  });
+});

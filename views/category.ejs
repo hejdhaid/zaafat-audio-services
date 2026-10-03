@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= siteName %> | الرئيسية</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <div class="brand"><%= siteName %></div>
+        <nav class="nav-links">
+          <a href="/">الرئيسية</a>
+          <a href="/artists">أصوات الفنانين</a>
+          <a href="/pricing">الأسعار</a>
+          <a href="/admin/login">لوحة التحكم</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1>مكتبة صوتية احترافية للزفات والاحتفالات</h1>
+            <p>
+              اكتشف أصواتاً مميزة ومناسبة لكل مناسبة، من زفات العروس والعريس إلى المناسبات الخاصة
+              والاحتفالات السنوية. كل ملف يتم عرضه بشكل مرتب مع إمكانية الطلب مباشرة عبر واتساب.
+            </p>
+            <div class="btn-row">
+              <a class="btn primary" href="#categories">استعرض الأقسام</a>
+              <a class="btn secondary" href="/artists">أصوات الفنانين</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="stats">
+              <div class="stat-box">
+                <span class="label">أسعار جديدة</span>
+                <strong><%= pricing.newWords %> ريال</strong>
+              </div>
+              <div class="stat-box">
+                <span class="label">تعديل</span>
+                <strong><%= pricing.edit %> ريال</strong>
+              </div>
+              <div class="stat-box">
+                <span class="label">رقم الواتساب</span>
+                <strong>+<%= whatsappNumber %></strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <div class="container">
+          <h2 class="section-title">الأقسام الرئيسية</h2>
+          <div class="grid">
+            <% categories.forEach(function(category) { %>
+              <article class="card category-card">
+                <div>
+                  <div class="category-icon">🎵</div>
+                  <h3><%= category.name %></h3>
+                  <p>
+                    <%= category.files.length %> ملف صوتي متاح
+                  </p>
+                </div>
+                <a class="link-btn" href="/category/<%= category.id %>">استعراض القسم</a>
+              </article>
+            <% }); %>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">الأسعار الحصرية</h2>
+          <div class="pricing-box">
+            <h3>الأسعار</h3>
+            <div class="price-list">
+              <div class="price-row">
+                <span>كلمات جديدة</span>
+                <strong><%= pricing.newWords %> ريال</strong>
+              </div>
+              <div class="price-row">
+                <span>تعديل</span>
+                <strong><%= pricing.edit %> ريال</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">© <%= new Date().getFullYear() %> <%= siteName %> · جميع الحقوق محفوظة</div>
+    </footer>
+  </body>
+</html>
